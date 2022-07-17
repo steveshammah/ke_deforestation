@@ -1,48 +1,37 @@
-import { Stack, Text } from "@chakra-ui/react";
-import { useState } from "react";
-import Loader from "./Loader";
+import {
+  Stack,
+  useToast,
+} from "@chakra-ui/react";
+
+import { useEffect } from "react";
 import Iframe from "react-iframe";
 
 const Forest = ({ activeForest }) => {
-  const [loading, setLoading] = useState(true);
+  const toast = useToast();
+  const id = "test-toast";
 
-  const handleLoad = () => {
-    setLoading(false);
-  };
+  useEffect(() => {
+    if (!toast.isActive(id)) {
+      toast({
+        id,
+        title: activeForest.Forest,
+        description: "Loading...",
+        status: "info",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
+  }, [activeForest]);
+
   return (
-    <Stack width={"100%"} height="container.md" justify="center" align="center">
-      <Text
-        as={"h2"}
-        fontSize={"1.2rem"}
-        fontWeight={"700"}
-        textTransform="uppercase"
-      >
-        {activeForest.Forest}
-      </Text>
-      <Stack
-        height="100%"
-        width="100%"
-        borderColor="#eee"
-        borderTop={"2px"}
-        display="flex"
-        align="center"
-        justify="center"
-      >
-        {/* {loading ? (
-          <Loader /> */}
-        {/* ) : ( */}
+    <Stack width={"100%"} height={{base: '35vh', md:'container.sm'}} justify="center" align="center">
         <Iframe
           url={activeForest.Slider}
           width="100%"
           height="100%"
           loading="lazy"
           display="initial"
-          position="relative"
-          // onLoad={handleLoad}
         />
-        {/* )} */}
-      </Stack>
-      <Text textTransform="capitalize">{activeForest.Description}</Text>)
     </Stack>
   );
 };

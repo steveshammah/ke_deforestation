@@ -1,17 +1,18 @@
 import React from "react";
-import { Divider, Stack, Text } from "@chakra-ui/react";
+import { Stack, Text } from "@chakra-ui/react";
 import { FaBars } from "react-icons/fa";
 const Header = ({ onOpen }) => {
   return (
     <Stack
       direction="row"
       align="center"
-      padding="1rem"
+      padding="0.8rem"
       position={"sticky"}
       top={0}
       left={0}
       color="whitesmoke"
       bg={"green.800"}
+      zIndex={999}
     >
       <FaBars
         color="whitesmoke"

@@ -9,17 +9,22 @@ const Footer = () => (
     padding={"2"}
     bg={"#333"}
     color="whitesmoke"
+    align={"center"}
+    position={"absolute"}
+    bottom={"0"}
+    left={"0"}
+    right={"0"}
   >
     <Flex>
       <Link
-        href="https://github.com/steveshammah/ke_deforestation"
+        href="https://github.com/robinkiplangat/ke_deforestation"
         fontSize={"1.5rem"}
         target="_blank"
       >
         <FaGithub />
       </Link>
     </Flex>
-    <Text width={"30rem"}>
+    <Text width={"30rem"} fontSize={{ base: ".8rem", md: "1rem" }}>
       Deforestation Ke @{new Date().getFullYear()}. All rights reserved.
     </Text>
   </Stack>
